@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "live-server --port=8080",
+    "dev": "live-server --port=5500",
     "test": "jest --watchAll"
   },
   "keywords": [],
