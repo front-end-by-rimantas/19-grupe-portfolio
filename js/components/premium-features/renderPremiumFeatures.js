@@ -16,7 +16,7 @@ function renderPremiumFeatures(selector, featuresData) {
     // logic
     const DOM = document.querySelector(selector);
     if (!DOM) {
-        console.error('ERROR: could not find an elements by a given selector.')
+        console.error('ERROR: could not find an elements by a given selector.');
         return false;
     }
 
@@ -38,11 +38,16 @@ function renderPremiumFeatures(selector, featuresData) {
                 </div>`;
     }
 
-    DOM.innerHTML = HTML;
 
     // post logic validation
+    if (HTML === '') {
+        console.error('ERROR: given data object does not contain valid data.');
+        return false;
+    }
 
     // return
+    DOM.innerHTML = HTML;
+    return true;
 }
 
 export { renderPremiumFeatures }
