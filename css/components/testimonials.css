@@ -1,51 +1,74 @@
 .testimonial {
-    
+    display: inline-block;
+    width: 100%;
 }
     .testimonial > .view {
-
+        display: inline-block;
+        width: 100%;
     }
         .testimonial > .view > .list {
-
+            display: inline-block;
+            width: 100%;
         }
             .testimonial .list > .item {
-
+                display: inline-block;
+                width: 100%;
+                padding: 0 40px;
+                text-align: center;
             }
                 .testimonial .item > .avatar {
-                    
+                    display: inline-block;
+                    width: 100px;
+                    height: 100px;
+                    margin-bottom: 30px;
+                    object-fit: contain;
+                    object-position: center;
+                    border-radius: 50%;
+                    border: 1px solid #ddd;
                 }
                 .testimonial .item > .name {
-
+                    display: inline-block;
+                    width: 100%;
+                    margin-bottom: 15px;
                 }
                 .testimonial .item > .location {
-
+                    display: inline-block;
+                    width: 100%;
+                    margin-bottom: 15px;
                 }
                 .testimonial .item > .stars {
-
+                    display: inline-block;
+                    width: 100%;
+                    margin-bottom: 30px;
+                    color: orange;
                 }
-                    .testimonial .stars > .star {
-
-                    }
-                    .testimonial .stars > .star-empty {
-
-                    }
                 .testimonial .item > .description {
-
+                    display: inline-block;
+                    width: 100%;
                 }
     .testimonial > .controls {
-
+        display: inline-block;
+        width: 100%;
+        margin-top: 40px;
+        text-align: center;
     }
         .testimonial > .controls > .fa {
-
+            display: inline-block;
         }
             .testimonial > .controls > .fa:hover {
 
             }
         .testimonial > .controls > .dot {
-
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--main-color);
+            opacity: 0.5;
         }
-            .testimonial > .controls > .dot.active {
-
-            }
             .testimonial > .controls > .dot:hover {
-
+                opacity: 0.75;
+            }
+            .testimonial > .controls > .dot.active {
+                opacity: 1;
             }
