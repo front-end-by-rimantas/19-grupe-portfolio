@@ -1,16 +1,13 @@
+import { Validator } from '../validator/Validator.js';
+
 function isValidInput(selector, featuresData) {
-    if (typeof selector !== 'string') {
-        // console.error('ERROR: premium features selector has to be a string type.');
+    if (!Validator.isSelector(selector)) {
         return false;
     }
-    if (typeof featuresData !== 'object' ||
-        Array.isArray(featuresData) ||
-        featuresData === null) {
-        // console.error('ERROR: premium features data has to be an array type.');
+    if (!Validator.isObject(featuresData)) {
         return false;
     }
-    if (!Array.isArray(featuresData.data)) {
-        // console.error('ERROR: premium features data has to be an array type.');
+    if (!Validator.isArray(featuresData.data)) {
         return false;
     }
 
