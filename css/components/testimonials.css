@@ -1,0 +1,51 @@
+.testimonial {
+    
+}
+    .testimonial > .view {
+
+    }
+        .testimonial > .view > .list {
+
+        }
+            .testimonial .list > .item {
+
+            }
+                .testimonial .item > .avatar {
+                    
+                }
+                .testimonial .item > .name {
+
+                }
+                .testimonial .item > .location {
+
+                }
+                .testimonial .item > .stars {
+
+                }
+                    .testimonial .stars > .star {
+
+                    }
+                    .testimonial .stars > .star-empty {
+
+                    }
+                .testimonial .item > .description {
+
+                }
+    .testimonial > .controls {
+
+    }
+        .testimonial > .controls > .fa {
+
+        }
+            .testimonial > .controls > .fa:hover {
+
+            }
+        .testimonial > .controls > .dot {
+
+        }
+            .testimonial > .controls > .dot.active {
+
+            }
+            .testimonial > .controls > .dot:hover {
+
+            }
