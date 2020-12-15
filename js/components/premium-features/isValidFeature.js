@@ -1,28 +1,16 @@
+import { Validator } from '../validator/Validator.js';
+
 function isValidFeature(feature) {
-    if (typeof feature !== 'object' ||
-        feature === null ||
-        feature === undefined) {
-        // console.error('ERROR: ...');
+    if (!Validator.isObject(feature)) {
         return false;
     }
-    if (typeof feature.img !== 'string') {
-        // console.error('ERROR: ...');
+    if (!Validator.isImageFile(feature.img)) {
         return false;
     }
-    if (feature.img.length < 5) {
-        // console.error('ERROR: ...');
+    if (!Validator.isTitle(feature.title)) {
         return false;
     }
-    if (feature.img.length > 100) {
-        // console.error('ERROR: ...');
-        return false;
-    }
-    if (typeof feature.title !== 'string') {
-        // console.error('ERROR: ...');
-        return false;
-    }
-    if (typeof feature.description !== 'string') {
-        // console.error('ERROR: ...');
+    if (!Validator.isDescription(feature.description)) {
         return false;
     }
 

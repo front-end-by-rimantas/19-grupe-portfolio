@@ -1,4 +1,5 @@
 /* reset/main */
+@import './components/variables.css';
 @import './components/reset.css';
 @import './components/layout.css';
 /* 3rd party components */
@@ -21,6 +22,10 @@ CUSTOM HOME PAGE STYLES GOES BELOW THIS COMMENT
 */
 
 /* main style */
+.bg-main-color {
+    background-color: var(--main-color);
+}
+
 h2 {
     font-size: 44px;
     line-height: 50px;
@@ -33,6 +38,8 @@ p {
 }
 /* header */
 /* hero */
+
+
 /* features */
 /* app promo */
 /* app promo 2 */

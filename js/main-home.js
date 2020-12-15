@@ -2,6 +2,8 @@
 ALL IMPORTS
 ****************/
 /* header */
+import { renderHeader } from './components/header/renderHeader.js';
+import { headerData } from './data/headerData.js';
 /* hero */
 /* features */
 import { renderPremiumFeatures } from './components/premium-features/renderPremiumFeatures.js';
@@ -23,6 +25,8 @@ import { premiumFeaturesData } from './data/premiumFeaturesData.js';
 EXECUTION
 ****************/
 /* header */
+renderHeader('header nav', headerData);
+
 /* hero */
 /* features */
 renderPremiumFeatures('#premium_features_block', premiumFeaturesData);

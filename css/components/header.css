@@ -1,0 +1,25 @@
+header.container {
+    padding: 15px 0;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+    header .logo {
+        display: inline-block;
+        float: left;
+        height: 40px;
+    }
+    header nav {
+        display: inline-block;
+        float: right;
+    }
+        header nav > a {
+            display: inline-block;
+            float: left;
+            padding: 0 10px;
+            font-size: 18px;
+            line-height: 40px;
+            color: #fff;
+            text-decoration: none;
+        }
