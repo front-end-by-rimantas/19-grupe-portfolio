@@ -13,6 +13,8 @@ import { premiumFeaturesData } from './data/premiumFeaturesData.js';
 /* how works */
 /* gallery */
 /* testimonials */
+import { Testimonials } from './components/testimonials/Testimonials.js';
+import { testimonialData } from './data/testimonialsData.js';
 /* pricing */
 /* faq */
 /* team */
@@ -36,6 +38,16 @@ renderPremiumFeatures('#premium_features_block', premiumFeaturesData);
 /* how works */
 /* gallery */
 /* testimonials */
+new Testimonials({
+    selector: '#testimonials_block',
+    data: testimonialData,
+    // isArrowControlsVisible: false,
+    // isDotControlsVisible: true,
+    // maxItems: 7,
+    // cloneCount: 2,
+    // visibilityStrategy: 'last',
+});
+
 /* pricing */
 /* faq */
 /* team */
