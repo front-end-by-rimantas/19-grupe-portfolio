@@ -1,41 +1,76 @@
 class Testimonials {
     constructor(params) {
-        this.selector = params.selector;
-        this.data = params.data;
-        this.isArrowControlsVisible = params.isArrowControlsVisible;
-        this.isDotControlsVisible = params.isDotControlsVisible;
-        this.maxItems = params.maxItems;
-        this.cloneCount = params.cloneCount;
-        this.visibilityStrategy = params.visibilityStrategy;
+        this.selector = params.selector || 'body';
+        this.data = params.data || [];
+        this.isArrowControlsVisible = params.isArrowControlsVisible || false;
+        this.isDotControlsVisible = params.isDotControlsVisible || true;
+        this.maxItems = params.maxItems || 5;
+        this.cloneCount = params.cloneCount || 2;
+        this.visibilityStrategy = params.visibilityStrategy || 'random';
 
-        console.log(this);
+        this.DOM = null;
+
+        this.init();
     }
 
-    isValidSelector() {
-        return true;
-    }
+    init() {
+        // TODO: input (params) validation
+        // TODO: blogiems reikia priskirti default reiksmes
 
-    render() {
         if (!this.isValidSelector()) {
             return;
         }
+        this.render();
+    }
 
+    isValidSelector() {
+        const DOM = document.querySelector(this.selector);
+        if (!DOM) {
+            return false;
+        }
+        this.DOM = DOM;
+        return true;
+    }
+
+    isValidTestimonial(testimonial) {
+        return true;
+    }
+
+    generateStars(rating) {
+        const maxStars = 5;
+        let HTML = '<i class="fa fa-star"></i>'.repeat(rating);
+        HTML += '<i class="fa fa-star-o"></i>'.repeat(maxStars - rating);
+
+        return HTML;
+    }
+
+    generateItems() {
+        let HTML = '';
+        for (let testimonial of this.data) {
+            if (!this.isValidTestimonial(testimonial)) {
+                continue;
+            }
+
+            console.log(testimonial);
+
+            HTML += `<div class="item" style="width: 20%;">
+                        <img class="avatar" src="./img/testimonials/avatar-2.png" alt="${testimonial.name} testimonial image">
+                        <div class="name">${testimonial.name}</div>
+                        <div class="location">${testimonial.location}</div>
+                        <div class="stars">
+                            ${this.generateStars(testimonial.rating)}
+                        </div>
+                        <p class="description">${testimonial.comment}</p>
+                    </div>`;
+        }
+        return HTML;
+    }
+
+    render() {
         const HTML = `<div class="testimonial">
                         <div class="view">
-                            <div class="list">
-                                <div class="item">
-                                    <img class="avatar" src="./img/testimonials/avatar-2.png" alt="Jassica Williams testimonial image">
-                                    <div class="name">Jassica Williams</div>
-                                    <div class="location">Los Angeles, California</div>
-                                    <div class="stars">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                    <p class="description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores, nisi soluta. Animi architecto commodi necessitatibus, quisquam cupiditate optio cumque a, perferendis aperiam nisi perspiciatis dignissimos, sed non? Corporis, nisi ratione.</p>
-                                </div>
+                            <div class="list" style="width: 500%;">
+                                ${this.generateItems()}
                             </div>
                         </div>
                         <div class="controls">
@@ -47,8 +82,7 @@ class Testimonials {
                         </div>
                     </div>`;
 
-        const DOM = document.querySelector(this.selector);
-        DOM.innerHTML = HTML;
+        this.DOM.innerHTML = HTML;
     }
 }
 
