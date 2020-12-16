@@ -1,10 +1,13 @@
 /* reset/main */
+@import './components/variables.css';
 @import './components/reset.css';
 @import './components/layout.css';
 /* 3rd party components */
+@import './components/font-awesome.min.css';
 /* your components */
 @import './components/button.css';
 @import './components/faq.css';
+@import './components/features.css';
 @import './components/footer.css';
 @import './components/form.css';
 @import './components/gallery.css';
@@ -20,8 +23,24 @@ CUSTOM HOME PAGE STYLES GOES BELOW THIS COMMENT
 */
 
 /* main style */
+.bg-main-color {
+    background-color: var(--main-color);
+}
+
+h2 {
+    font-size: 44px;
+    line-height: 50px;
+    color: #111;
+}
+p {
+    font-size: 17px;
+    line-height: 20px;
+    color: #555;
+}
 /* header */
 /* hero */
+
+
 /* features */
 /* app promo */
 /* app promo 2 */
