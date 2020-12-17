@@ -9,6 +9,10 @@ class Testimonials {
         this.visibilityStrategy = params.visibilityStrategy || 'random';
 
         this.DOM = null;
+        this.listDOM = null;
+        this.controlsDOM = null;
+        this.dotsDOMs = null;
+        this.activeDotIndex = 0;
 
         this.init();
     }
@@ -21,6 +25,7 @@ class Testimonials {
             return;
         }
         this.render();
+        this.addEvents();
     }
 
     isValidSelector() {
@@ -51,8 +56,6 @@ class Testimonials {
                 continue;
             }
 
-            console.log(testimonial);
-
             HTML += `<div class="item" style="width: 20%;">
                         <img class="avatar" src="./img/testimonials/avatar-2.png" alt="${testimonial.name} testimonial image">
                         <div class="name">${testimonial.name}</div>
@@ -66,6 +69,26 @@ class Testimonials {
         return HTML;
     }
 
+    generateControls() {
+        let HTML = '';
+
+        if (!this.isArrowControlsVisible && !this.isDotControlsVisible) {
+            return HTML;
+        }
+
+        const testimonialsCount = this.data.length;
+        let dotsHTML = '<div class="dot active"></div>';
+        dotsHTML += '<div class="dot"></div>'.repeat(testimonialsCount - 1);
+
+        HTML = `<div class="controls">
+                    ${this.isArrowControlsVisible ? '<i class="fa fa-angle-left"></i>' : ''}
+                    ${this.isDotControlsVisible ? dotsHTML : ''}
+                    ${this.isArrowControlsVisible ? '<i class="fa fa-angle-right"></i>' : ''}
+                </div>`;
+
+        return HTML;
+    }
+
     render() {
         const HTML = `<div class="testimonial">
                         <div class="view">
@@ -73,16 +96,35 @@ class Testimonials {
                                 ${this.generateItems()}
                             </div>
                         </div>
-                        <div class="controls">
-                            <i class="fa fa-angle-left"></i>
-                            <div class="dot active"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <i class="fa fa-angle-right"></i>
-                        </div>
+                        ${this.generateControls()}
                     </div>`;
 
         this.DOM.innerHTML = HTML;
+
+        this.listDOM = this.DOM.querySelector('.list');
+
+        if (this.isArrowControlsVisible || this.isDotControlsVisible) {
+            this.controlsDOM = this.DOM.querySelector('.controls');
+
+            if (this.isDotControlsVisible) {
+                this.dotsDOMs = this.controlsDOM.querySelectorAll('.dot');
+            }
+        }
+    }
+
+    addEvents() {
+        for (let i = 0; i < this.dotsDOMs.length; i++) {
+            const dot = this.dotsDOMs[i];
+
+            dot.addEventListener('click', () => {
+                this.listDOM.style.marginLeft = -100 * i + '%';
+
+                this.dotsDOMs[this.activeDotIndex].classList.remove('active');
+                this.activeDotIndex = i;
+
+                dot.classList.add('active');
+            })
+        }
     }
 }
 

@@ -10,6 +10,7 @@
         .testimonial > .view > .list {
             display: inline-block;
             width: 100%;
+            transition: all 1s;
         }
             .testimonial .list > .item {
                 display: inline-block;
