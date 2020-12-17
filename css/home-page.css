@@ -6,6 +6,7 @@
 @import './components/font-awesome.min.css';
 /* your components */
 @import './components/button.css';
+@import './components/counter.css';
 @import './components/faq.css';
 @import './components/features.css';
 @import './components/footer.css';
