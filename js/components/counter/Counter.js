@@ -4,6 +4,10 @@ class Counter {
         this.data = params.data;
 
         this.DOM = null;
+        this.countersDOMs = null;
+
+        this.animationDuration = 5;
+        this.animationFPS = 30;
 
         this.init();
     }
@@ -36,10 +40,44 @@ class Counter {
         }
 
         this.DOM.innerHTML = HTML;
+        this.countersDOMs = this.DOM.querySelectorAll('.counter');
+    }
+
+    counterAnimation(counterIndex) {
+        let count = 0;
+
+        const numberDOM = this.countersDOMs[counterIndex].querySelector('.number');
+
+        const timer = setInterval(() => {
+            numberDOM.innerText = count++ + this.data[counterIndex].type;
+
+            if (this.data[counterIndex].number === count) {
+                clearInterval(timer);
+            }
+        }, 1000 / this.animationFPS)
     }
 
     addEvents() {
+        console.log(this.countersDOMs);
 
+        addEventListener('scroll', () => {
+            const windowBottom = scrollY + innerHeight;
+            let counterBottom = 0;
+
+            for (let i = 0; i < this.countersDOMs.length; i++) {
+                if (this.data[i].animated) {
+                    continue;
+                }
+
+                const counter = this.countersDOMs[i];
+                counterBottom = counter.clientHeight + counter.offsetTop;
+
+                if (counterBottom < windowBottom) {
+                    this.data[i].animated = true;
+                    this.counterAnimation(i);
+                }
+            }
+        })
     }
 }
 
