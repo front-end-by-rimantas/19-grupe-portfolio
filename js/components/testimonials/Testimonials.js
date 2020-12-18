@@ -51,12 +51,15 @@ class Testimonials {
 
     generateItems() {
         let HTML = '';
-        for (let testimonial of this.data) {
+        const itemWidth = 100 / (this.data.length + 2 * this.cloneCount);
+        const dataCopy = [this.data[3], this.data[4], ...this.data, this.data[0], this.data[1]];
+
+        for (let testimonial of dataCopy) {
             if (!this.isValidTestimonial(testimonial)) {
                 continue;
             }
 
-            HTML += `<div class="item" style="width: 20%;">
+            HTML += `<div class="item" style="width: ${itemWidth}%;">
                         <img class="avatar" src="./img/testimonials/avatar-2.png" alt="${testimonial.name} testimonial image">
                         <div class="name">${testimonial.name}</div>
                         <div class="location">${testimonial.location}</div>
@@ -90,9 +93,11 @@ class Testimonials {
     }
 
     render() {
+        const listWidth = (this.data.length + 2 * this.cloneCount) * 100;
+
         const HTML = `<div class="testimonial">
                         <div class="view">
-                            <div class="list" style="width: 500%;">
+                            <div class="list" style="width: ${listWidth}%; margin-left: -${this.cloneCount}00%;">
                                 ${this.generateItems()}
                             </div>
                         </div>
