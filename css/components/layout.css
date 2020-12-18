@@ -1,3 +1,7 @@
+:root {
+    --row-gap: 30px;
+}
+
 body {
     display: grid;
     grid-template-columns: 1fr;
@@ -13,7 +17,7 @@ body {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         grid-column: 2/3;
-        gap: 30px;
+        gap: var(--row-gap);
     }
         .container > .row > .col-1 { grid-column: auto / span 1; }
         .container > .row > .col-2 { grid-column: auto / span 2; }
@@ -52,7 +56,7 @@ body {
         gap: 20px;
     }
     .container > .row {
-        gap: 20px;
+        --row-gap: 20px;
     }
         .container > .row > .col-md-1 { grid-column: auto / span 1; }
         .container > .row > .col-md-2 { grid-column: auto / span 2; }
@@ -73,7 +77,7 @@ body {
         grid-template-columns: 1fr 640px 1fr;
     }
     .container > .row {
-        gap: 10px;
+        --row-gap: 10px;
     }
         .container > .row > .col-sm-1 { grid-column: auto / span 1; }
         .container > .row > .col-sm-2 { grid-column: auto / span 2; }
@@ -94,7 +98,7 @@ body {
         grid-template-columns: 20px 1fr 20px;
     }
     .container > .row {
-        gap: 10px;
+        --row-gap: 10px;
     }
         .container > .row > .col-xs-1 { grid-column: auto / span 1; }
         .container > .row > .col-xs-2 { grid-column: auto / span 2; }

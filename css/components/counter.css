@@ -1,0 +1,38 @@
+.counter {
+    text-align: center;
+    font-weight: bold;
+    position: relative;
+}
+    .counter + .counter::before {
+        content: '';
+        display: inline-block;
+        width: 1px;
+        height: 40px;
+        background-color: #999;
+        position: absolute;
+        left: calc(var(--row-gap) * -0.5);
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .counter > .number {
+        font-size: 45px;
+        line-height: 80px;
+        color: var(--main-color);
+    }
+    .counter > .label {
+        font-size: 17px;
+        line-height: 20px;
+        color: #333;
+    }
+
+@media (max-width: 860px) {
+    .counter:nth-of-type(2n+1)::before {
+        display: none;
+    }
+}
+
+@media (max-width: 680px) {
+    .counter + .counter::before {
+        display: none;
+    }
+}
