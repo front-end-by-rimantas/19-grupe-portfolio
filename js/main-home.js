@@ -5,6 +5,9 @@ ALL IMPORTS
 import { renderHeader } from './components/header/renderHeader.js';
 import { headerData } from './data/headerData.js';
 /* hero */
+/* stats */
+import { Counter } from './components/counter/Counter.js';
+import { statsData } from './data/statsData.js';
 /* features */
 import { renderPremiumFeatures } from './components/premium-features/renderPremiumFeatures.js';
 import { premiumFeaturesData } from './data/premiumFeaturesData.js';
@@ -30,6 +33,12 @@ EXECUTION
 renderHeader('header nav', headerData);
 
 /* hero */
+/* stats */
+new Counter({
+    selector: '#stats_counter_block',
+    data: statsData,
+});
+
 /* features */
 renderPremiumFeatures('#premium_features_block', premiumFeaturesData);
 
