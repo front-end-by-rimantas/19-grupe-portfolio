@@ -57,6 +57,11 @@
     }
         .testimonial > .controls > .fa {
             display: inline-block;
+            width: 16px;
+            font-size: 24px;
+            line-height: 20px;
+            text-align: center;
+            cursor: pointer;
         }
             .testimonial > .controls > .fa:hover {
 
@@ -65,9 +70,11 @@
             display: inline-block;
             width: 16px;
             height: 16px;
+            margin: 3px;
             border-radius: 50%;
             background-color: var(--main-color);
             opacity: 0.5;
+            cursor: pointer;
         }
             .testimonial > .controls > .dot:hover {
                 opacity: 0.75;

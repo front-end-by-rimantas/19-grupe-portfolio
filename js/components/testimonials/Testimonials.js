@@ -12,6 +12,7 @@ class Testimonials {
         this.listDOM = null;
         this.controlsDOM = null;
         this.dotsDOMs = null;
+        this.arrowsDOMs = null;
         this.activeDotIndex = 0;
 
         this.init();
@@ -111,23 +112,49 @@ class Testimonials {
         if (this.isArrowControlsVisible || this.isDotControlsVisible) {
             this.controlsDOM = this.DOM.querySelector('.controls');
 
+            if (this.isArrowControlsVisible) {
+                this.arrowsDOMs = this.controlsDOM.querySelectorAll('.fa');
+            }
+
             if (this.isDotControlsVisible) {
                 this.dotsDOMs = this.controlsDOM.querySelectorAll('.dot');
             }
         }
     }
 
+    clickDot(dotIndex) {
+        const dot = this.dotsDOMs[dotIndex];
+        this.listDOM.style.marginLeft = -100 * (dotIndex + this.cloneCount) + '%';
+        this.dotsDOMs[this.activeDotIndex].classList.remove('active');
+        this.activeDotIndex = dotIndex;
+        dot.classList.add('active');
+    }
+
     addEvents() {
-        for (let i = 0; i < this.dotsDOMs.length; i++) {
-            const dot = this.dotsDOMs[i];
+        if (this.isDotControlsVisible) {
+            for (let i = 0; i < this.dotsDOMs.length; i++) {
+                const dot = this.dotsDOMs[i];
 
-            dot.addEventListener('click', () => {
-                this.listDOM.style.marginLeft = -100 * i + '%';
+                dot.addEventListener('click', () => {
+                    this.clickDot(i);
+                })
+            }
+        }
 
-                this.dotsDOMs[this.activeDotIndex].classList.remove('active');
-                this.activeDotIndex = i;
-
-                dot.classList.add('active');
+        if (this.isArrowControlsVisible) {
+            this.arrowsDOMs[0].addEventListener('click', () => {
+                let dotIndex = this.activeDotIndex - 1;
+                if (dotIndex === -1) {
+                    dotIndex = this.data.length - 1;
+                }
+                this.clickDot(dotIndex);
+            })
+            this.arrowsDOMs[1].addEventListener('click', () => {
+                let dotIndex = this.activeDotIndex + 1;
+                if (dotIndex === this.data.length) {
+                    dotIndex = 0;
+                }
+                this.clickDot(dotIndex);
             })
         }
     }

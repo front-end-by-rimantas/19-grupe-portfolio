@@ -50,11 +50,7 @@ renderPremiumFeatures('#premium_features_block', premiumFeaturesData);
 new Testimonials({
     selector: '#testimonials_block',
     data: testimonialData,
-    // isArrowControlsVisible: false,
-    // isDotControlsVisible: true,
-    // maxItems: 7,
-    // cloneCount: 2,
-    // visibilityStrategy: 'last',
+    isArrowControlsVisible: true,
 });
 
 /* pricing */
