@@ -1,6 +1,6 @@
 const headerData = [
     {
-        link: '#',
+        link: '/',
         name: 'Home',
     },
     {
@@ -16,7 +16,7 @@ const headerData = [
         name: 'Screenshots',
     },
     {
-        link: '#',
+        link: 'pricing',
         name: 'Pricing',
     },
     {

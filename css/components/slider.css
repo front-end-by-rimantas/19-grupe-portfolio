@@ -1,0 +1,54 @@
+.slider {
+    display: inline-block;
+    width: 100%;
+}
+    .slider > .view {
+        display: inline-block;
+        width: 100%;
+        overflow: hidden;
+    }
+        .slider > .view > .list {
+            display: inline-block;
+            width: 100%;
+            transition: all 1s;
+        }
+            .slider .list > .item {
+                display: inline-block;
+                width: 100%;
+                float: left;
+                padding: 0 40px;
+                text-align: center;
+            }
+    .slider > .controls {
+        display: inline-block;
+        width: 100%;
+        margin-top: 40px;
+        text-align: center;
+    }
+        .slider > .controls > .fa {
+            display: inline-block;
+            width: 16px;
+            font-size: 24px;
+            line-height: 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+            .slider > .controls > .fa:hover {
+
+            }
+        .slider > .controls > .dot {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            margin: 3px;
+            border-radius: 50%;
+            background-color: var(--main-color);
+            opacity: 0.5;
+            cursor: pointer;
+        }
+            .slider > .controls > .dot:hover {
+                opacity: 0.75;
+            }
+            .slider > .controls > .dot.active {
+                opacity: 1;
+            }

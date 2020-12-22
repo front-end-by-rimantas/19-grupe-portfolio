@@ -1,12 +1,14 @@
-class Testimonials {
+class Slider {
     constructor(params) {
         this.selector = params.selector || 'body';
         this.data = params.data || [];
+        this.renderEngine = params.renderEngine || null;
         this.isArrowControlsVisible = params.isArrowControlsVisible || false;
         this.isDotControlsVisible = params.isDotControlsVisible || true;
         this.maxItems = params.maxItems || 5;
         this.cloneCount = params.cloneCount || 2;
         this.visibilityStrategy = params.visibilityStrategy || 'random';
+        this.itemsPerView = params.itemsPerView || 1;
 
         this.DOM = null;
         this.listDOM = null;
@@ -21,7 +23,6 @@ class Testimonials {
     init() {
         // TODO: input (params) validation
         // TODO: blogiems reikia priskirti default reiksmes
-
         if (!this.isValidSelector()) {
             return;
         }
@@ -38,41 +39,6 @@ class Testimonials {
         return true;
     }
 
-    isValidTestimonial(testimonial) {
-        return true;
-    }
-
-    generateStars(rating) {
-        const maxStars = 5;
-        let HTML = '<i class="fa fa-star"></i>'.repeat(rating);
-        HTML += '<i class="fa fa-star-o"></i>'.repeat(maxStars - rating);
-
-        return HTML;
-    }
-
-    generateItems() {
-        let HTML = '';
-        const itemWidth = 100 / (this.data.length + 2 * this.cloneCount);
-        const dataCopy = [this.data[3], this.data[4], ...this.data, this.data[0], this.data[1]];
-
-        for (let testimonial of dataCopy) {
-            if (!this.isValidTestimonial(testimonial)) {
-                continue;
-            }
-
-            HTML += `<div class="item" style="width: ${itemWidth}%;">
-                        <img class="avatar" src="./img/testimonials/avatar-2.png" alt="${testimonial.name} testimonial image">
-                        <div class="name">${testimonial.name}</div>
-                        <div class="location">${testimonial.location}</div>
-                        <div class="stars">
-                            ${this.generateStars(testimonial.rating)}
-                        </div>
-                        <p class="description">${testimonial.comment}</p>
-                    </div>`;
-        }
-        return HTML;
-    }
-
     generateControls() {
         let HTML = '';
 
@@ -80,9 +46,9 @@ class Testimonials {
             return HTML;
         }
 
-        const testimonialsCount = this.data.length;
+        const itemsCount = this.data.length;
         let dotsHTML = '<div class="dot active"></div>';
-        dotsHTML += '<div class="dot"></div>'.repeat(testimonialsCount - 1);
+        dotsHTML += '<div class="dot"></div>'.repeat(itemsCount - this.itemsPerView);
 
         HTML = `<div class="controls">
                     ${this.isArrowControlsVisible ? '<i class="fa fa-angle-left"></i>' : ''}
@@ -93,12 +59,32 @@ class Testimonials {
         return HTML;
     }
 
+    generateItems() {
+        let HTML = '';
+        const itemWidth = 100 / (this.data.length + 2 * this.cloneCount) / this.itemsPerView;
+        const dataCopy = [this.data[3], this.data[4], ...this.data, this.data[0], this.data[1]];
+
+        for (let item of dataCopy) {
+            const itemObject = new this.renderEngine(item);
+
+            if (!itemObject.isValid()) {
+                continue;
+            }
+
+            HTML += `<div class="item" style="width: ${itemWidth}%;">
+                        ${itemObject.generateHTML()}
+                    </div>`;
+        }
+        return HTML;
+    }
+
     render() {
         const listWidth = (this.data.length + 2 * this.cloneCount) * 100;
+        const marginLeft = this.cloneCount * (-100 / this.itemsPerView);
 
-        const HTML = `<div class="testimonial">
+        const HTML = `<div class="slider">
                         <div class="view">
-                            <div class="list" style="width: ${listWidth}%; margin-left: -${this.cloneCount}00%;">
+                            <div class="list" style="width: ${listWidth}%; margin-left: ${marginLeft}%;">
                                 ${this.generateItems()}
                             </div>
                         </div>
@@ -124,7 +110,7 @@ class Testimonials {
 
     clickDot(dotIndex) {
         const dot = this.dotsDOMs[dotIndex];
-        this.listDOM.style.marginLeft = -100 * (dotIndex + this.cloneCount) + '%';
+        this.listDOM.style.marginLeft = -100 * (dotIndex + this.cloneCount) / this.itemsPerView + '%';
         this.dotsDOMs[this.activeDotIndex].classList.remove('active');
         this.activeDotIndex = dotIndex;
         dot.classList.add('active');
@@ -160,4 +146,4 @@ class Testimonials {
     }
 }
 
-export { Testimonials }
+export { Slider }

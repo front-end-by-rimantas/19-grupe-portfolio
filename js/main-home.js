@@ -16,8 +16,13 @@ import { premiumFeaturesData } from './data/premiumFeaturesData.js';
 /* how works */
 /* gallery */
 /* testimonials */
-import { Testimonials } from './components/testimonials/Testimonials.js';
+import { Slider } from './components/slider/Slider.js';
+import { Testimonial } from './components/testimonial/Testimonial.js';
 import { testimonialData } from './data/testimonialsData.js';
+
+import { PortfolioDesign } from './components/portfolio-design/PortfolioDesign.js';
+import { portfolioDesignData } from './data/portfolioDesignData.js';
+
 /* pricing */
 /* faq */
 /* team */
@@ -47,10 +52,19 @@ renderPremiumFeatures('#premium_features_block', premiumFeaturesData);
 /* how works */
 /* gallery */
 /* testimonials */
-new Testimonials({
+new Slider({
     selector: '#testimonials_block',
     data: testimonialData,
+    renderEngine: Testimonial,
     isArrowControlsVisible: true,
+    itemsPerView: 3
+});
+new Slider({
+    selector: '#testimonials_block2',
+    data: portfolioDesignData,
+    renderEngine: PortfolioDesign,
+    isArrowControlsVisible: true,
+    itemsPerView: 4
 });
 
 /* pricing */

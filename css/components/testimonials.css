@@ -2,83 +2,33 @@
     display: inline-block;
     width: 100%;
 }
-    .testimonial > .view {
+    .testimonial > .avatar {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        margin-bottom: 30px;
+        object-fit: contain;
+        object-position: center;
+        border-radius: 50%;
+        border: 1px solid #ddd;
+    }
+    .testimonial > .name {
         display: inline-block;
         width: 100%;
-        overflow: hidden;
+        margin-bottom: 15px;
     }
-        .testimonial > .view > .list {
-            display: inline-block;
-            width: 100%;
-            transition: all 1s;
-        }
-            .testimonial .list > .item {
-                display: inline-block;
-                width: 100%;
-                float: left;
-                padding: 0 40px;
-                text-align: center;
-            }
-                .testimonial .item > .avatar {
-                    display: inline-block;
-                    width: 100px;
-                    height: 100px;
-                    margin-bottom: 30px;
-                    object-fit: contain;
-                    object-position: center;
-                    border-radius: 50%;
-                    border: 1px solid #ddd;
-                }
-                .testimonial .item > .name {
-                    display: inline-block;
-                    width: 100%;
-                    margin-bottom: 15px;
-                }
-                .testimonial .item > .location {
-                    display: inline-block;
-                    width: 100%;
-                    margin-bottom: 15px;
-                }
-                .testimonial .item > .stars {
-                    display: inline-block;
-                    width: 100%;
-                    margin-bottom: 30px;
-                    color: orange;
-                }
-                .testimonial .item > .description {
-                    display: inline-block;
-                    width: 100%;
-                }
-    .testimonial > .controls {
+    .testimonial > .location {
         display: inline-block;
         width: 100%;
-        margin-top: 40px;
-        text-align: center;
+        margin-bottom: 15px;
     }
-        .testimonial > .controls > .fa {
-            display: inline-block;
-            width: 16px;
-            font-size: 24px;
-            line-height: 20px;
-            text-align: center;
-            cursor: pointer;
-        }
-            .testimonial > .controls > .fa:hover {
-
-            }
-        .testimonial > .controls > .dot {
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            margin: 3px;
-            border-radius: 50%;
-            background-color: var(--main-color);
-            opacity: 0.5;
-            cursor: pointer;
-        }
-            .testimonial > .controls > .dot:hover {
-                opacity: 0.75;
-            }
-            .testimonial > .controls > .dot.active {
-                opacity: 1;
-            }
+    .testimonial > .stars {
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 30px;
+        color: orange;
+    }
+    .testimonial > .description {
+        display: inline-block;
+        width: 100%;
+    }
