@@ -57,14 +57,14 @@ new Slider({
     data: testimonialData,
     renderEngine: Testimonial,
     isArrowControlsVisible: true,
-    itemsPerView: 3
+    // itemsPerView: 1
 });
 new Slider({
     selector: '#testimonials_block2',
     data: portfolioDesignData,
     renderEngine: PortfolioDesign,
     isArrowControlsVisible: true,
-    itemsPerView: 4
+    // itemsPerView: 1
 });
 
 /* pricing */

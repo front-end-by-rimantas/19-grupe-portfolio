@@ -12,6 +12,9 @@
             width: 100%;
             transition: all 1s;
         }
+            .slider > .view > .list.teleport {
+                transition: none;
+            }
             .slider .list > .item {
                 display: inline-block;
                 width: 100%;

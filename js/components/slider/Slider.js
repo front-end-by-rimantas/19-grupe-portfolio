@@ -6,9 +6,11 @@ class Slider {
         this.isArrowControlsVisible = params.isArrowControlsVisible || false;
         this.isDotControlsVisible = params.isDotControlsVisible || true;
         this.maxItems = params.maxItems || 5;
-        this.cloneCount = params.cloneCount || 2;
         this.visibilityStrategy = params.visibilityStrategy || 'random';
+        this.cloneCount = params.cloneCount || 2;
         this.itemsPerView = params.itemsPerView || 1;
+
+        // this.cloneCount += this.itemsPerView;
 
         this.DOM = null;
         this.listDOM = null;
@@ -16,6 +18,10 @@ class Slider {
         this.dotsDOMs = null;
         this.arrowsDOMs = null;
         this.activeDotIndex = 0;
+        this.dotCount = this.data.length - this.itemsPerView + 1;
+        this.animationDuration = 1000;
+
+        this.isAnimating = false;
 
         this.init();
     }
@@ -46,9 +52,8 @@ class Slider {
             return HTML;
         }
 
-        const itemsCount = this.data.length;
         let dotsHTML = '<div class="dot active"></div>';
-        dotsHTML += '<div class="dot"></div>'.repeat(itemsCount - this.itemsPerView);
+        dotsHTML += '<div class="dot"></div>'.repeat(this.dotCount - 1);
 
         HTML = `<div class="controls">
                     ${this.isArrowControlsVisible ? '<i class="fa fa-angle-left"></i>' : ''}
@@ -109,11 +114,48 @@ class Slider {
     }
 
     clickDot(dotIndex) {
-        const dot = this.dotsDOMs[dotIndex];
-        this.listDOM.style.marginLeft = -100 * (dotIndex + this.cloneCount) / this.itemsPerView + '%';
+        if (this.isAnimating) {
+            return;
+        }
+        let teleportation = false;
+        this.isAnimating = true;
+
+        // rodomas elementas, pries teleportacija
+        let currentlyActiveDotIndex = this.activeDotIndex;
+
+        // neberodome aktyvaus tasko
         this.dotsDOMs[this.activeDotIndex].classList.remove('active');
-        this.activeDotIndex = dotIndex;
+
+        // pajudiname sarasa i tinkama vieta
+        this.listDOM.style.marginLeft = -100 * (dotIndex + this.cloneCount) / this.itemsPerView + '%';
+
+        // randame kuri taska reikes is tikruju parodyti kaip aktyvu
+        currentlyActiveDotIndex = dotIndex;
+        if (dotIndex === this.dotCount) {
+            currentlyActiveDotIndex = 0;
+            teleportation = true;
+        }
+        if (dotIndex < 0) {
+            currentlyActiveDotIndex = this.dotCount - 1;
+            teleportation = true;
+        }
+        const dot = this.dotsDOMs[currentlyActiveDotIndex];
         dot.classList.add('active');
+
+        // atnaujiname globaliai, kuris dabar yra aktyvus taskas
+        this.activeDotIndex = currentlyActiveDotIndex;
+
+        setTimeout(() => {
+            this.isAnimating = false;
+
+            if (teleportation) {
+                this.listDOM.classList.add('teleport');
+                this.listDOM.style.marginLeft = -100 * (currentlyActiveDotIndex + this.cloneCount) / this.itemsPerView + '%';
+                setTimeout(() => {
+                    this.listDOM.classList.remove('teleport');
+                }, 50);
+            }
+        }, this.animationDuration);
     }
 
     addEvents() {
@@ -128,16 +170,19 @@ class Slider {
         }
 
         if (this.isArrowControlsVisible) {
+            // left arrow - previous
             this.arrowsDOMs[0].addEventListener('click', () => {
                 let dotIndex = this.activeDotIndex - 1;
-                if (dotIndex === -1) {
-                    dotIndex = this.data.length - 1;
+                if (dotIndex === -2) {
+                    dotIndex = this.dotCount - 1;
                 }
                 this.clickDot(dotIndex);
             })
+
+            // right arrow - next
             this.arrowsDOMs[1].addEventListener('click', () => {
                 let dotIndex = this.activeDotIndex + 1;
-                if (dotIndex === this.data.length) {
+                if (dotIndex === this.dotCount + 1) {
                     dotIndex = 0;
                 }
                 this.clickDot(dotIndex);
