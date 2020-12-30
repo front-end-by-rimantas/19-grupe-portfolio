@@ -4,17 +4,17 @@ const premiumFeaturesData = {
     data: [
         {
             img: 'featured_image_1.png',
-            title: 'Fully functional',
+            title: 'feature-fully-func',
             description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, blanditiis. Asperiores voluptatibus maiores sint adipisci!'
         },
         {
             img: 'featured_image_2.png',
-            title: 'Live Chat',
+            title: 'feature-live-chat',
             description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, blanditiis. Asperiores voluptatibus maiores sint adipisci!'
         },
         {
             img: 'featured_image_3.png',
-            title: 'Secure Data',
+            title: 'feature-secure-data',
             description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, blanditiis. Asperiores voluptatibus maiores sint adipisci!'
         },
         {

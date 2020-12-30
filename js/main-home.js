@@ -4,6 +4,7 @@ ALL IMPORTS
 /* header */
 import { renderHeader } from './components/header/renderHeader.js';
 import { headerData } from './data/headerData.js';
+import { enableLangs } from './components/header/enableLangs.js';
 /* hero */
 /* stats */
 import { Counter } from './components/counter/Counter.js';
@@ -36,6 +37,7 @@ EXECUTION
 ****************/
 /* header */
 renderHeader('header nav', headerData);
+enableLangs();
 
 /* hero */
 /* stats */

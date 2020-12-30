@@ -5,21 +5,40 @@ header.container {
     left: 50%;
     transform: translateX(-50%);
 }
-    header .logo {
-        display: inline-block;
-        float: left;
-        height: 40px;
-    }
-    header nav {
-        display: inline-block;
-        float: right;
-    }
-        header nav > a {
-            display: inline-block;
-            float: left;
-            padding: 0 10px;
-            font-size: 18px;
-            line-height: 40px;
-            color: #fff;
-            text-decoration: none;
-        }
+header .col-12 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+header .logo {
+    display: inline-block;
+    height: 40px;
+}
+header nav {
+    display: inline-block;
+}
+header nav > a {
+    display: inline-block;
+    float: left;
+    padding: 0 10px;
+    font-size: 18px;
+    line-height: 40px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.lang-switch {
+    display: inline-block;
+    color: #fff;
+}
+.lang-switch > .lang {
+    display: inline-block;
+    float: left;
+    padding: 10px;
+    cursor: pointer;
+}
+.lang-switch > .lang:hover,
+.lang-switch > .lang.active {
+    background-color: #fff;
+    color: #333;
+}
