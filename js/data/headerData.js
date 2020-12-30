@@ -1,27 +1,27 @@
 const headerData = [
     {
-        link: '#',
-        name: 'Home',
+        link: '/',
+        name: 'menu-home',
     },
     {
         link: '#',
-        name: 'Features',
+        name: 'menu-features',
     },
     {
         link: '#',
-        name: 'Pages',
+        name: 'menu-pages',
     },
     {
         link: '#',
-        name: 'Screenshots',
+        name: 'menu-screenshots',
+    },
+    {
+        link: 'pricing',
+        name: 'menu-pricing',
     },
     {
         link: '#',
-        name: 'Pricing',
-    },
-    {
-        link: '#',
-        name: 'Contact',
+        name: 'menu-contact',
     },
 ];
 

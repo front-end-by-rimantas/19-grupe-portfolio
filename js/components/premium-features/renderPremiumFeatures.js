@@ -1,5 +1,6 @@
 import { isValidInput } from './isValidInput.js';
 import { isValidFeature } from './isValidFeature.js';
+import { translate } from '../translator/translate.js';
 
 /**
  * Premium Features sekcija generuojanti funkcija
@@ -32,7 +33,7 @@ function renderPremiumFeatures(selector, featuresData) {
         HTML += `<div class="col-4 col-sm-6 col-xs-12">
                     <div class="block">
                         <img src="./img/${featuresData.imgFolder}/${feature.img}" alt="Premium feature &quot;${feature.title}&quot; image">
-                        <h3>${feature.title}</h3>
+                        <h3>${translate(feature.title)}</h3>
                         <p>${feature.description}</p>
                     </div>
                 </div>`;

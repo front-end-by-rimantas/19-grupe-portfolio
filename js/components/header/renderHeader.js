@@ -1,5 +1,6 @@
 import { isValidInput } from "./isValidInput.js";
 import { isValidLink } from "./isValidLink.js";
+import { translate } from '../translator/translate.js';
 
 /**
  * Navigacijos generavimas
@@ -19,7 +20,7 @@ function renderHeader(selector, data) {
     let HTML = '';
     for (let { link, name } of data) {
         if (isValidLink(link, name)) {
-            HTML += `<a href="${link}">${name}</a>`;
+            HTML += `<a href="${link}">${translate(name)}</a>`;
         }
     }
 
