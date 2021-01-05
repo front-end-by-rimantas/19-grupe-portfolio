@@ -1,6 +1,36 @@
-/* Temporary style - remove it later */
+.row.hero {
+    padding-top: 60px;
+}
 
-.hero.container {
-    min-height: 100vh;
-    padding-top: 150px;
+    .row.hero > .col-7 {
+        padding-top: 100px;
+    }
+
+        h1 {
+            color: #fff;
+            font-size: 60px;
+            line-height: 70px;
+            font-weight: 600;
+        }
+
+        .row.hero > .col-7 > p {
+            color: #fff;
+            line-height: 25px;
+            margin: 25px 0 50px;
+        }
+
+        a.btn-white {
+            text-decoration: none;
+            text-transform: uppercase;
+            color: #000;
+            line-height: 30px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+form.bg-white {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 40px;
+    height: 550px;
 }
